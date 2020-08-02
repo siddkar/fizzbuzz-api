@@ -1,0 +1,95 @@
+swagger: "2.0"
+info:
+  description: Fizzbuzz API which takes in the count and prints the fizzbuzz pattern.
+  version: 1.0.0
+  title: Fizzbuzz API
+  contact:
+    name: Siddharth Kar
+basePath: /fizzbuzz-api-v1
+host: abni35i9ge.execute-api.ap-south-1.amazonaws.com
+schemes:
+  - https
+tags:
+  - name: Fizzbuzz
+    description: Fizzbuzz API
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  "/fizzbuzz-api-v1/fizzbuzz/print-pattern":
+    get:
+      tags:
+        - Fizzbuzz
+      operationId: printPattern
+      parameters:
+        - name: count
+          in: query
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/PatternResponse"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+        "400":
+          description: Bad Request
+          schema:
+            $ref: "#/definitions/Error"
+        "404":
+          description: Not Found
+          schema:
+            $ref: "#/definitions/Error"
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: "#/definitions/Error"
+definitions:
+  PatternResponse:
+    type: object
+    properties:
+      fizzBuzzPatternArray:
+        description: prints fizzbuzz pattern in array format
+        type: array
+        items:
+          type: string
+      fizzBuzzPattern:
+        description: prints fizzbuzz pattern in string format
+        type: string
+  ApiValidationError:
+    type: object
+    properties:
+      field:
+        type: string
+        description: Field name
+      message:
+        type: string
+        description: Validation message
+    title: ApiValidationError
+    description: Validation error details for a bad request
+  Error:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+        description: Code
+      developerMessage:
+        type: string
+        description: Developer Message
+      errors:
+        type: array
+        description: Request path
+        items:
+          $ref: "#/definitions/ApiValidationError"
+      moreInformation:
+        type: string
+        description: More Information
+      userMessage:
+        type: string
+        description: User Message
+    title: Error
+    description: API's response message upon exceptions, warnings, etc.
+  Empty: {}

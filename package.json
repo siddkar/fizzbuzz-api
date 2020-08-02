@@ -1,0 +1,40 @@
+{
+  "name": "fizzbuzz-api",
+  "version": "1.0.0",
+  "description": "Sample Fizzbuzz API",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --timeout 10000 --exit",
+    "start": "nodemon --watch src --watch index.js",
+    "build:deploy": "npm install --production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/siddkar/fizzbuzz-api.git"
+  },
+  "keywords": [
+    "NodeJS",
+    "ReactJS",
+    "REST"
+  ],
+  "author": "Siddharth Kar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/siddkar/fizzbuzz-api/issues"
+  },
+  "homepage": "https://github.com/siddkar/fizzbuzz-api#readme",
+  "dependencies": {
+    "ajv": "^6.12.3",
+    "aws-serverless-express": "^3.3.8",
+    "express": "^4.17.1",
+    "pino": "^6.4.1",
+    "pino-pretty": "^4.1.0",
+    "uuid": "^8.3.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "mocha": "^8.1.0",
+    "nodemon": "^2.0.4"
+  }
+}
