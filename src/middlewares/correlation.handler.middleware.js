@@ -11,6 +11,7 @@ const logger = require('../config/pino.config');
 const correlationIdHandlerMiddleware = (req, res, next) => {
     const correlationId = v4();
     req['x-correlation-id'] = correlationId;
+    res.header('x-correlation-id', correlationId);
     logger.info(`Correlation id for the request : ${req['x-correlation-id']}`);
     return next();
 };
